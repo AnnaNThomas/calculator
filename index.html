@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f7f7f7;
+            margin: 0;
+        }
+
+        .calculator {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        h1 {
+            color: blue;
+            margin-bottom: 20px;
+        }
+
+        input[type="number"],
+        select,
+        input[type="text"],
+        button {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #cccccc;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        input[type="number"],
+        select {
+            background-color: #f1f1f1;
+        }
+
+        input[type="text"] {
+            background-color: #e0e0e0;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <h1>Calculator</h1>
+        <input type="number" id="fnum" step="any" placeholder="First Number">
+        <select id="ope">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="number" id="snum" step="any" placeholder="Second Number">
+        <button onclick="calc()">Calculate</button>
+        <label for="result">Result:</label>
+        <input type="text" id="result" readonly>
+    </div>
+
+    <script>
+        function calc() {
+            var opr1 = document.getElementById("fnum").value;
+            var opt = document.getElementById("ope").value;
+            var opr2 = document.getElementById("snum").value;
+
+            var res;
+            if (opt == "+") {
+                res = parseFloat(opr1) + parseFloat(opr2);
+            } else if (opt == "-") {
+                res = parseFloat(opr1) - parseFloat(opr2);
+            } else if (opt == "*") {
+                res = parseFloat(opr1) * parseFloat(opr2);
+            } else if (opt == "/") {
+                res = parseFloat(opr1) / parseFloat(opr2);
+            }
+
+            document.getElementById("result").value = res;
+        }
+    </script>
+</body>
+
+</html>
